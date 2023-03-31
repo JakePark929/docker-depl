@@ -39,11 +39,12 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t ${{ secrets.DOCKER_REPO }}/docker-depl .
           docker push ${{ secrets.DOCKER_REPO }}/docker-depl
+
       - name: Executing Remote SSH Commands Using Password
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_ID }}
-          username: ec2-user
+          username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             sudo docker rm -f $(docker ps -qa)
