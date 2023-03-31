@@ -5,12 +5,12 @@ services:
     container_name: docker-depl-database
     build:
       dockerfile: Dockerfile
-      context: ./dockerfile/database
+      context: dockerfiles/database
     image: epikeran/docker-depl-database
     environment:
       - MYSQL_DATABASE=dockerdepl
       - MYSQL_ROOT_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
     volumes:
-      - ./dockerfile/database/config/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./dockerfiles/database/config/my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - "3306:3306"
