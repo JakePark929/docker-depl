@@ -41,16 +41,5 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker stop $(docker ps -q)
-            docker rm $(docker ps -a -q)
-            docker rmi -f $(docker images -q)
-            
-            rm -rf docker-depl
-            git clone https://github.com/JakePark929/docker-depl.git
-            cp myKey/.env docker-depl
-            cd docker-depl
-            sudo chmod u+x gradlew
-            ./gradlew build -x test
-            
-            docker-compose up -d
+            ${{ secrets.DEPLOY_SCRIPT }}
 
