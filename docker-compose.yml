@@ -26,5 +26,5 @@ services:                                                                # 컨�
       - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
     ports:
       - "80:8080"
-    restart: always # depends on 은 실행순서만 컨트롤 함
+#    restart: always # depends on 은 실행순서만 컨트롤 함
     # DB 컨테이너가 실행가는 상태가 아니여서 실패하는 경우 재시작 하도록 설정
